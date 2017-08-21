@@ -128,6 +128,7 @@
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\EplRepo.cs" />
+    <Compile Include="Steps\UpdateSchedule.cs" />
     <Compile Include="Steps\ScheduleCrawler.cs" />
     <Compile Include="Steps\Crawler.cs" />
   </ItemGroup>

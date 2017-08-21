@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using Dapper;
 using VideoLinkCrawler.Models;
+using VideoLinkCrawler.Steps;
 
 namespace VideoLinkCrawler.Repo
 {
@@ -25,6 +26,17 @@ namespace VideoLinkCrawler.Repo
                         select @awayid=teamid from TeamInfo where TeamNameCN=@Away
                         IF EXISTS(SELECT 1 FROM  [dbo].[Schedule] WHERE Homeid=@homeid and Awayid=@awayid and Time=@time)
                         BEGIN UPDATE [Schedule] set Link =@Link , LastModifiedOn= getdate() where Homeid=@homeid and Awayid=@awayid and Time=@time End";
+            _connection.Execute(sql, scheduler);
+            _connection.Close();
+        }
+
+
+        public void UpDateScheduleLink(DbSchedule scheduler)
+        {
+            var sql = @"UPDATE [Schedule] set Link =isnull(@Link,Link),HighLightLink =isnull(@HighLightLink,HighLightLink),
+                       FirstHalfLink =isnull(@FirstHalfLink,FirstHalfLink),
+                       SecondHalfLink =isnull(@SecondHalfLink,SecondHalfLink), 
+                      LastModifiedOn =getdate() WHERE Id=@Id";
             _connection.Execute(sql, scheduler);
             _connection.Close();
         }
