@@ -5,6 +5,7 @@ using System.Globalization;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using VideoLinkCrawler.Models;
 using VideoLinkCrawler.Repo;
 
@@ -20,10 +21,10 @@ namespace VideoLinkCrawler.Steps
         [SetUp]
         public void SetupTest()
         {
-           _driver = new ChromeDriver();
+           _driver = new FirefoxDriver();
             var _BaseUrl = "https://www.premierleague.com/fixtures";
             _driver.Navigate().GoToUrl(_BaseUrl);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+           _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
         }
 
         [Test]
