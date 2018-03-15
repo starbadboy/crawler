@@ -16,7 +16,7 @@ namespace VideoLinkCrawler.Steps
     {
         private readonly EplRepo _eplRepo = new EplRepo();
 
-        [Test]
+        [Ignore("h")][Test]
         public void UpdateScheduleDb()
         {
             var schedule = new DbSchedule
