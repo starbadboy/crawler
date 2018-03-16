@@ -21,7 +21,7 @@ namespace VideoLinkCrawler.Steps
         [SetUp]
         public void SetupTest()
         {
-           _driver = new FirefoxDriver();
+            _driver = new ChromeDriver();
             var _BaseUrl = "https://www.premierleague.com/fixtures";
             _driver.Navigate().GoToUrl(_BaseUrl);
            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
