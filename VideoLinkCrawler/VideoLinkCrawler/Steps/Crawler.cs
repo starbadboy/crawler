@@ -41,7 +41,7 @@ namespace VideoLinkCrawler.Steps
                 int index = isHd ? 1 : 0;
                 var leaguename = lines[0+index];
 
-                if (!leaguename.Contains("英超")) continue;
+                if (!leaguename.Contains("英超")|| !leaguename.Contains("足总杯")) continue;
                 var schedule = new Schedule
                 {
                     Home = lines[2 + index],

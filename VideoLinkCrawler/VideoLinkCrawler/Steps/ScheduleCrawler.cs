@@ -18,18 +18,16 @@ namespace VideoLinkCrawler.Steps
         public List<Schedule> Schedules = new List<Schedule>();
         private readonly EplRepo _eplRepo = new EplRepo();
 
-        [SetUp]
-        public void SetupTest()
+
+
+        [TestCase("https://www.premierleague.com/fixtures?co=1")]
+        [TestCase("https://www.premierleague.com/fixtures?co=4")]
+        public void Crawl(string url)
         {
             _driver = new ChromeDriver();
-            var _BaseUrl = "https://www.premierleague.com/fixtures";
-            _driver.Navigate().GoToUrl(_BaseUrl);
-           _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
-        }
-
-        [Test]
-        public void Crawl()
-        {
+            //var _BaseUrl = "https://www.premierleague.com/fixtures";
+            _driver.Navigate().GoToUrl(url);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             var content = _driver.FindElement(By.ClassName("fixtures"));
             var datelong = content.FindElements(By.CssSelector(".date.long"));
             var matchlists = content.FindElements(By.ClassName("matchList"));
