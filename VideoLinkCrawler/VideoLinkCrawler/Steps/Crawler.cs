@@ -22,7 +22,7 @@ namespace VideoLinkCrawler.Steps
         [SetUp]
         public void SetupTest()
         {
-           _driver = new ChromeDriver();
+           _driver = new FirefoxDriver();
             var _BaseUrl = "http://m.didiaokan.com/body.html";
             _driver.Navigate().GoToUrl(_BaseUrl);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
@@ -41,7 +41,7 @@ namespace VideoLinkCrawler.Steps
                 int index = isHd ? 1 : 0;
                 var leaguename = lines[0+index];
 
-                if (!leaguename.Contains("英超")|| !leaguename.Contains("足总杯")) continue;
+                if (!leaguename.Contains("英超") && !leaguename.Contains("足总杯")) continue;
                 var schedule = new Schedule
                 {
                     Home = lines[2 + index],

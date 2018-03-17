@@ -24,7 +24,7 @@ namespace VideoLinkCrawler.Steps
         [TestCase("https://www.premierleague.com/fixtures?co=4")]
         public void Crawl(string url)
         {
-            _driver = new ChromeDriver();
+            _driver = new FirefoxDriver();
             //var _BaseUrl = "https://www.premierleague.com/fixtures";
             _driver.Navigate().GoToUrl(url);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
